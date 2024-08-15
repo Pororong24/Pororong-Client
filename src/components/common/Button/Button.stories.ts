@@ -11,11 +11,9 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Kakao: Story = {
+export const Primary: Story = {
   args: {
-    variant: 'kakao',
-    children: 'Kakao로 3초만에 로그인하기',
-    width: '401px',
-    height: '56px',
+    variant: 'primary',
+    children: '내용',
   },
 };

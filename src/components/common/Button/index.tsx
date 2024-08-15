@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import KakaoLogo from '@/assets/icons/kakao.svg';
 import { theme } from '@/styles/theme';
 
 export interface ButtonProps {
-  variant?: 'default' | 'primary' | 'secondary' | 'kakao';
+  variant?: 'default' | 'primary' | 'secondary';
   children: React.ReactNode;
   width?: string | null;
   height?: string | null;
@@ -29,13 +28,6 @@ export const Button = ({
     disabled={disabled}
     {...props}
   >
-    {variant === 'kakao' && (
-      <img
-        src={KakaoLogo}
-        alt="Kakao"
-        style={{ paddingRight: '24px', width: '24px', height: '24px' }}
-      />
-    )}
     {children}
   </StyledButton>
 );
@@ -47,7 +39,7 @@ const StyledButton = styled.button<{
 }>`
   ${({ theme }) => theme.font.label1m};
 
-  padding: 8px 24px;
+  padding: 16px 24px;
   border: none;
   border-radius: 8px;
   display: inline-flex;
@@ -56,20 +48,11 @@ const StyledButton = styled.button<{
 
   ${({ variant, $width, $height }) => {
     switch (variant) {
-      case 'kakao':
-        return `
-          background-color: #fee500;
-          color: #000000;
-           width: ${$width || 'auto'};
-          height: ${$height || 'auto'};
-          border: 1px solid  #fee500;
-          &:hover {
-            filter: brightness(80%);
-          }
-        `;
       case 'primary':
         return `
           //나중에
+          width: ${$width};
+          height: ${$height};
         `;
       case 'secondary':
         return `
@@ -77,11 +60,7 @@ const StyledButton = styled.button<{
         `;
       default:
         return `
-          background-color: #E0E0E0;
-          color: #000000;
-          &:hover {
-            background-color: #C0C0C0;
-          }
+          //나중에
         `;
     }
   }}
