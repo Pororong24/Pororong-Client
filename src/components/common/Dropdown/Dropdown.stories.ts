@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Dropdowns: Story = {
   args: {
     items: ['카테고리 1', '카테고리 2', '카테고리 3'],
     width: '400px',
