@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { theme } from '@/styles/theme';
 
 export interface ButtonProps {
-  variant?: 'default' | 'primary' | 'secondary';
+  variant?: 'default' | 'primary' | 'secondary' | 'gray';
   children: React.ReactNode;
   width?: string | null;
   height?: string | null;
@@ -22,8 +22,8 @@ export const Button = ({
 }: ButtonProps) => (
   <StyledButton
     variant={variant}
-    $width={width}
-    $height={height}
+    width={width}
+    height={height}
     onClick={onClick}
     disabled={disabled}
     {...props}
@@ -34,40 +34,67 @@ export const Button = ({
 
 const StyledButton = styled.button<{
   variant: string;
-  $width?: string | null;
-  $height?: string | null;
+  width?: string | null;
+  height?: string | null;
 }>`
   ${({ theme }) => theme.font.label1m};
 
-  padding: 16px 24px;
+  padding: 8px 24px;
   border: none;
   border-radius: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  ${({ variant, $width, $height }) => {
+  ${({ variant, width, height }) => {
     switch (variant) {
       case 'primary':
         return `
-          //나중에
-          width: ${$width};
-          height: ${$height};
+          color: ${theme.color.primary700};
+          background-color: ${theme.color.primary50};
+          width: ${width};
+          height: ${height};
+
+          &:hover {
+          color: ${theme.color.primary700};
+            background-color: ${theme.color.primary100};
+          }
         `;
+
       case 'secondary':
         return `
-         //나중에
+         color: ${theme.color.primary50};
+         background-color: ${theme.color.primary600};
+         width: ${width};
+         height: ${height};
+
+         &:hover {
+           color: ${theme.color.primary50};
+           background-color: ${theme.color.primary700};
+         }
         `;
+
+      case 'gray':
+        return `
+          color: ${theme.color.white};
+          background-color: ${theme.color.gray800};
+          width: ${width};
+          height: ${height};
+          
+          &:hover {
+            color: ${theme.color.white};
+            background-color: ${theme.color.gray700};
+          }
+          `;
+
       default:
         return `
-          //나중에
+          color: ${theme.color.gray700};
+          background-color: ${theme.color.gray200};
+          width: ${width};
+          height: ${height};
+          cursor: default;
         `;
     }
   }}
-
-  &:disabled {
-    color: ${theme.color.gray700};
-    background-color: ${theme.color.gray200};
-    cursor: default;
-  }
 `;

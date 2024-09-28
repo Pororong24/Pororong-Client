@@ -43,7 +43,7 @@ const DropdownButton = styled.button<{ width: string }>`
   border: none;
   padding: 16px;
   cursor: pointer;
-  ${theme.font.body2r};
+  ${({ theme }) => theme.font.body2r};
   width: ${(props) => props.width};
   height: 48px;
   border-radius: 8px;
@@ -57,7 +57,7 @@ const DropdownContent = styled.div<{ width: string }>`
   position: absolute;
   background-color: ${theme.color.white};
   color: ${theme.color.gray800};
-  ${theme.font.body2r};
+  ${({ theme }) => theme.font.body2r};
   border-radius: 8px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.13);
   z-index: 1;
