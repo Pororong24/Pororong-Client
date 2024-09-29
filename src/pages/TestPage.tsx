@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { theme } from '@/styles/theme';
 import { LoginButton } from '@/components/common/LoginButton';
-import { ReactComponent as CheckLogo } from '@/assets/icons/check.svg';
 
 export const TestPage = () => {
   return (
@@ -14,7 +13,6 @@ export const TestPage = () => {
       <LoginButton variant="google" width="274px" height="56px">
         Google로 3초만에 시작하기
       </LoginButton>
-      <CheckLogo />
     </div>
   );
 };

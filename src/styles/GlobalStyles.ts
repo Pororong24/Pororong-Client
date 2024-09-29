@@ -10,24 +10,19 @@ const globalStyles = css`
     font-style: normal;
   }
   * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
 
   html,
   body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: 'Noto Sans KR';
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  a {
-  }
   div {
     box-sizing: border-box;
   }

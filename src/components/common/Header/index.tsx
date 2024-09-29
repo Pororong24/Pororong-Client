@@ -3,7 +3,7 @@ import { NAVIGATION_MENU } from '@/constants/navigation';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import CheckLogo from '@/assets/icons/check.svg';
+import TempLogo from '@/assets/icons/TempLogo.svg';
 
 export const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -12,7 +12,7 @@ export const Header = () => {
     <StyledContainer>
       <Link to="/">
         <IconWrapper>
-          <img src={CheckLogo} alt="CheckLogo" />
+          <img src={TempLogo} alt="TempLogo" />
         </IconWrapper>
       </Link>
       <StyledMenuContainer>
@@ -62,7 +62,7 @@ const StyledContainer = styled.header`
 `;
 const StyledMenuContainer = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 42px;
   align-items: center;
 `;
 const StyledMenuButton = styled.div`
