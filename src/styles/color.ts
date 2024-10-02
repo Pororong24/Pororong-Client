@@ -25,4 +25,5 @@ export const color = {
 
   black: '#000000',
   white: '#ffffff',
+  warning: '#f45c8d',
 } as const;

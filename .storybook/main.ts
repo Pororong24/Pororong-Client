@@ -1,4 +1,7 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import { StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig } from 'vite';
+import svgr from 'vite-plugin-svgr';
+import path from 'path';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -13,5 +16,19 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  async viteFinal(config, { configType }) {
+    return mergeConfig(config, {
+      plugins: [svgr()],
+      resolve: {
+        alias: [
+          {
+            find: '@',
+            replacement: path.resolve(__dirname, '../src'),
+          },
+        ],
+      },
+    });
+  },
 };
+
 export default config;
