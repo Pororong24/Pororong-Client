@@ -10,13 +10,18 @@ export interface DropdownProps {
 
 export const Dropdown = ({ items, width = '160px' }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
+  const handleItemClick = (item: string) => {
+    setSelectedItem(item);
+    setIsOpen(false);
+  };
 
   return (
     <DropdownWrapper>
       <DropdownButton width={width} onClick={toggleDropdown}>
-        {isOpen ? 'Category' : '선택'}
+        {selectedItem || '선택'}
         <IconWrapper>
           <img src={CheckLogo} alt="CheckLogo" />
         </IconWrapper>
@@ -24,7 +29,9 @@ export const Dropdown = ({ items, width = '160px' }: DropdownProps) => {
       {isOpen && (
         <DropdownContent width={width}>
           {items.map((item, index) => (
-            <DropdownItem key={index}>{item}</DropdownItem>
+            <DropdownItem key={index} onClick={() => handleItemClick(item)}>
+              {item}
+            </DropdownItem>
           ))}
         </DropdownContent>
       )}
