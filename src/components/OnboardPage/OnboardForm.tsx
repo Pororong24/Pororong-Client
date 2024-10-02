@@ -5,9 +5,11 @@ import styled from '@emotion/styled';
 
 export const OnboardForm = () => {
   const handleClick = () => {
+    console.log('click');
     //TODO: 닉네임 입력창 열기
   };
   const buttonhandleClick = () => {
+    console.log('click2');
     //TODO: 어딘가로 이동
   };
   return (

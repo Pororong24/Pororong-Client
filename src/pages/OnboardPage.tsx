@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 export const OnboardPage = () => {
   return (
     <Container>
-      <Header />
+      <Header showMenu={false} />
       <StyledLeftContainer />
 
       <StyledRightContainer>

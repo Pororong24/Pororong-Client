@@ -5,7 +5,11 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import TempLogo from '@/assets/icons/TempLogo.svg';
 
-export const Header = () => {
+export interface HeaderProps {
+  showMenu?: boolean;
+}
+
+export const Header = ({ showMenu = true }: HeaderProps) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
   return (
@@ -15,29 +19,31 @@ export const Header = () => {
           <img src={TempLogo} alt="TempLogo" />
         </IconWrapper>
       </Link>
-      <StyledMenuContainer>
-        {NAVIGATION_MENU.map((item) => (
-          <StyledMenuButton
-            key={item.menu}
-            onClick={() => {
-              navigate(item.path);
-            }}
-          >
-            {item.menu}
-          </StyledMenuButton>
-        ))}
-        {loggedIn ? (
-          <StyledLoginButton>로그인</StyledLoginButton>
-        ) : (
-          <StyledLoginButton
-            onClick={() => {
-              setLoggedIn((prev) => !prev);
-            }}
-          >
-            로그아웃
-          </StyledLoginButton>
-        )}
-      </StyledMenuContainer>
+      {showMenu && (
+        <StyledMenuContainer>
+          {NAVIGATION_MENU.map((item) => (
+            <StyledMenuButton
+              key={item.menu}
+              onClick={() => {
+                navigate(item.path);
+              }}
+            >
+              {item.menu}
+            </StyledMenuButton>
+          ))}
+          {loggedIn ? (
+            <StyledLoginButton>로그인</StyledLoginButton>
+          ) : (
+            <StyledLoginButton
+              onClick={() => {
+                setLoggedIn((prev) => !prev);
+              }}
+            >
+              로그아웃
+            </StyledLoginButton>
+          )}
+        </StyledMenuContainer>
+      )}
     </StyledContainer>
   );
 };
