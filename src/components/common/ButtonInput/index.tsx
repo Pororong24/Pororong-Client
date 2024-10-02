@@ -6,10 +6,11 @@ export interface ButtonInputProps extends React.HTMLAttributes<HTMLInputElement>
   warning?: boolean;
   disabled?: boolean;
   children: React.ReactNode;
+  onButtonClick?: () => void;
 }
 
 export const ButtonInput = forwardRef<HTMLInputElement, ButtonInputProps>(function ButtonInput(
-  { warning = false, disabled = false, width, children, ...props },
+  { warning = false, disabled = false, width, children, onButtonClick, ...props },
   ref
 ) {
   const [isFocused, setIsFocused] = useState(false);
@@ -25,7 +26,9 @@ export const ButtonInput = forwardRef<HTMLInputElement, ButtonInputProps>(functi
   return (
     <StyledContainer $warning={warning} $focused={isFocused} $width={width} style={{ width }}>
       <input ref={ref} onFocus={handleFocus} onBlur={handleBlur} disabled={disabled} {...props} />
-      <StyledButton disabled={disabled}>{children}</StyledButton>
+      <StyledButton disabled={disabled} onClick={onButtonClick}>
+        {children}
+      </StyledButton>
     </StyledContainer>
   );
 });
@@ -52,6 +55,7 @@ const StyledContainer = styled.div<{
     flex: 1 0 0;
     background: transparent;
     border: none;
+    outline: none;
 
     ${({ theme }) => theme.font.body2r};
     color: ${({ theme }) => theme.color.gray700};

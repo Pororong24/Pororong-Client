@@ -22,5 +22,8 @@ export const ButtonInputs: Story = {
     width: {
       control: 'text',
     },
+    onButtonClick: {
+      action: 'clicked',
+    },
   },
 };

@@ -12,11 +12,16 @@ export const OnboardForm = () => {
     console.log('click2');
     //TODO: 어딘가로 이동
   };
+
+  const handleButtonClick = () => {
+    console.log('click3');
+  };
+
   return (
     <StyledContainer>
       <InputContainer>
         <div className="Title">닉네임 입력하기</div>
-        <ButtonInput onClick={handleClick} width="472px">
+        <ButtonInput onClick={handleClick} onButtonClick={handleButtonClick} width="472px">
           Text
         </ButtonInput>
         <div className="Description">중복된 이름·특수문자 사용불가</div>
